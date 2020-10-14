@@ -16,6 +16,7 @@ namespace SalesWebApiEF
 {
     public class Startup
     {
+        //constructor
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -28,9 +29,16 @@ namespace SalesWebApiEF
         {
             services.AddControllers();
             //this lets us speak to SQL server/context
+            //options is fred variable
             services.AddDbContext<SalesWebApiEFContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("SalesDb")));
-            //look back at appssetting and see there has been another connection from controller, but use first one put in
+            {
+            //look back at appssetting and see there has been another connection from controller, but SalesDB connects localhost
+                options.UseSqlServer(Configuration.GetConnectionString("SalesDb"));
+            });
+            //this service configures support for cross-origin scripting support.  
+            //It allows or denies one website access to this server.
+            //will not allow another website to talk to back end without this code.
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,6 +48,8 @@ namespace SalesWebApiEF
             {
                 app.UseDeveloperExceptionPage();
             }
+            //this is where CORS configures
+            app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseRouting();
 
