@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20201014133507_order init.cs" />
+    <Compile Remove="Migrations\20201014133507_order init.Designer.cs" />
+    <Compile Remove="Migrations\20201014134837_order init.cs" />
+    <Compile Remove="Migrations\20201014134837_order init.Designer.cs" />
+    <Compile Remove="Migrations\20201014140856_orderline init.cs" />
+    <Compile Remove="Migrations\20201014140856_orderline init.Designer.cs" />
+    <Compile Remove="Migrations\20201014142317_product init.cs" />
+    <Compile Remove="Migrations\20201014142317_product init.Designer.cs" />
+    <Compile Remove="Migrations\20201014151805_new orderline.cs" />
+    <Compile Remove="Migrations\20201014151805_new orderline.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.8" />
+    <PackageReference Include="microsoft.entityframeworkcore.SqlServer" Version="3.1.9" />
+    <PackageReference Include="microsoft.entityframeworkcore.tools" Version="3.1.9">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+  </ItemGroup>
+
+
+</Project>
