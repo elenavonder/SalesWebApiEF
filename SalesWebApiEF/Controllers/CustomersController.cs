@@ -9,8 +9,9 @@ using SalesWebApiEF.Data;
 using SalesWebApiEF.Models;
 
 namespace SalesWebApiEF.Controllers
-{
-    [Route("api/[controller]")]
+{//attribute stating which controller you want
+    //also it wants to take the word controller out of the class name (CustomersController) turns to (Customers)
+    [Route("api/[controller]")] 
     [ApiController]
     public class CustomersController : ControllerBase
     {
@@ -47,7 +48,7 @@ namespace SalesWebApiEF.Controllers
             return customer;
         }
 
-        //customer that is passed in has been modified and then saving changes
+        //customer that is passed in has been UPDATED and then saving changes
         // PUT: api/Customers/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
@@ -80,7 +81,8 @@ namespace SalesWebApiEF.Controllers
             return NoContent();
         }
 
-        //takes a new customer and adds to data
+        //takes a new customer and INSERTS to data
+        //passes entire customer instance into data
         // POST: api/Customers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
@@ -93,7 +95,7 @@ namespace SalesWebApiEF.Controllers
             return CreatedAtAction("GetCustomer", new { id = customer.Id }, customer);
         }
 
-        //deleting a customer
+        //DELETE a customer
         // DELETE: api/Customers/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<Customer>> DeleteCustomer(int id)

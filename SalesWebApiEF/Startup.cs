@@ -48,17 +48,23 @@ namespace SalesWebApiEF
             {
                 app.UseDeveloperExceptionPage();
             }
-            //this is where CORS configures
+            //this is where CORS configures. And allows the frontend to talk to backend
+            //origin: the website, method: for any method in code, header: in frontend can access anything using a certain key
             app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseRouting();
-
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+            //required for hosting and automatically migrating code (not for capstone)
+            //using(var scope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            //{
+            //    scope.ServiceProvider.GetService<SalesContext>().Database.Migrate();
+            //}
+
         }
     }
 }
