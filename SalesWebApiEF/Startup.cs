@@ -59,11 +59,11 @@ namespace SalesWebApiEF
             {
                 endpoints.MapControllers();
             });
-            //required for hosting and automatically migrating code (not for capstone)
-            //using (var scope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
-            //{
-            //    scope.ServiceProvider.GetService<SalesContext>().Database.Migrate();
-            //}
+            //required for hosting and automatically migrating code(not for capstone)
+                    using (var scope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+                    {
+                        scope.ServiceProvider.GetService<SalesWebApiEFContext>().Database.Migrate();
+                    }
 
         }
     }
