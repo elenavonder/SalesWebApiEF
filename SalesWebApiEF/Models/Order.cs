@@ -19,7 +19,7 @@ namespace SalesWebApiEF.Models
         [Column(TypeName = "datetime")]
         public DateTime Created { get; set; } = DateTime.Now;
         public int CustomerId { get; set; }
-        public virtual Customer Customers { get; set; }
+        public virtual Customer Customers { get; set; } = null;
 
         public Order()
         {

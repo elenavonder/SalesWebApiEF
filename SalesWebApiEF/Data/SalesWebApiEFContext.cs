@@ -21,5 +21,14 @@ namespace SalesWebApiEF.Data
         public DbSet<SalesWebApiEF.Models.OrderLine> OrderLine { get; set; }
 
         public DbSet<SalesWebApiEF.Models.Product> Product { get; set; }
+
+        //have to type in. Not created for us
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<Customer>(e =>
+            { //when you want to make a unique COLUMN, you need to make a unique INDEX
+                e.HasIndex(x => x.Code).IsUnique(); 
+            });
+        }
     }
 }
